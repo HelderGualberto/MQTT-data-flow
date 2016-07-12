@@ -13,9 +13,12 @@ Another dependencie is the broker MQTT. You will need the credentials (user and 
 
 # Script Parameters
 The script has 2 required parameters, and one optional. These are:
-(required) First parameter - The number of messages that will be send in one second. (That can be called data flow) \n
-(required) Second parameter - The time while the client will stay sending messages, with the previous data flow \n
-(optional) Third parameter - The number of clients that will be sending messages simultaneously (default value is 1) \n
+
+(required) First parameter - The number of messages that will be send in one second. (That can be called data flow) 
+
+(required) Second parameter - The time while the client will stay sending messages, with the previous data flow 
+
+(optional) Third parameter - The number of clients that will be sending messages simultaneously (default value is 1) 
 
 # Example of use
 python mqtt-flow-mesurer.py 10 3 5
