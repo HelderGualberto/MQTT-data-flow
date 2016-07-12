@@ -8,7 +8,6 @@ broker_uri = ""
 
 
 def start_publishing(data_flow,data_duration,connection_param):
-	#client = mqtt.Client("jose",clean_session=True,userdata=None,protocol=mqtt.MQTTv311,transport="tcp")
 	client = mqtt.Client()
 	client.on_connect = on_connect
 	client.on_message = on_message
