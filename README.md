@@ -23,4 +23,4 @@ The script has 2 required parameters, and one optional. These are:
 # Example of use
 python mqtt-flow-mesurer.py 10 3 5
 
-This exemple means that five clients will send 10 messeges per second over three seconds (The messagens will be send to the same mqtt topic)
+This exemple means that five clients will send 10 messeges per second over three seconds (All messagens will be send to the same mqtt topic)
