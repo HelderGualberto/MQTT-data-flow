@@ -2,30 +2,33 @@ import paho.mqtt.client as mqtt
 import sys, time
 import multiprocessing
 
-username = ""
+username = "z2Mbx3i56CBzO3Rcnqt7"#"teste-helder"#"z2Mbx3i56CBzO3Rcnqt7"
 userpass = ""
-broker_uri = ""
+broker_uri = "35.172.244.47"#"www.semantixsense.com.br"#"35.172.244.47"
 
 
-def start_publishing(data_flow,data_duration,connection_param):
+def start_publishing(data_flow,data_duration,connection_param,_id):
 	client = mqtt.Client()
 	client.on_connect = on_connect
 	client.on_message = on_message
 	client.username_pw_set(connection_param[0],connection_param[1])
 	client.connect(connection_param[2], 1883, 60)
 
-	#define the payload to send
-	payload = "message to send"
-
 	#define the topic to publish messages
-	topic = "/mqtt/analyser"
-
+	topic = "v1/devices/me/telemetry"
+        time.sleep(0.5)
 	time_to_sleep = 1/float(data_flow)
 	for i in range(0,int(data_flow)*int(data_duration)):
-		client.publish(topic,payload,qos=1,retain=False)
+		
+	        #define the payload to send
+                payload = "\"id{}\":{},\"data{}\":{}".format(_id,_id,_id,i)
+                payload = "{"+payload+"}"
+                print payload
+                client.publish(topic,payload,qos=1,retain=False)
 		print "sleep: " + str(time_to_sleep)
 		time.sleep(time_to_sleep)
-
+        time.sleep(2)
+        client.disconnect()
 
 # The callback for when the client receives a CONNACK response from the server.
 def on_connect(client, userdata, flags, rc):
@@ -57,5 +60,5 @@ else:
 
 for i in range(0,data_points):
 	if __name__ == '__main__':	
-		p = multiprocessing.Process(target=start_publishing,args=(data_flow,data_duration,connection_param),)
+		p = multiprocessing.Process(target=start_publishing,args=(data_flow,data_duration,connection_param,i),)
 		p.start()
