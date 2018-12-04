@@ -2,9 +2,9 @@ import paho.mqtt.client as mqtt
 import sys, time
 import multiprocessing
 
-username = "z2Mbx3i56CBzO3Rcnqt7"#"teste-helder"#"z2Mbx3i56CBzO3Rcnqt7"
+username = ""
 userpass = ""
-broker_uri = "35.172.244.47"#"www.semantixsense.com.br"#"35.172.244.47"
+broker_uri = ""
 
 
 def start_publishing(data_flow,data_duration,connection_param,_id):
